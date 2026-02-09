@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可以当我的Valentine吗小猫咪? 🐱💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+            font-family: 'Microsoft YaHei', 'SimHei', 'Segoe UI', sans-serif;
+            font-weight: bold;
+        }
+
+        .cat-container {
+            font-size: 120px;
+            margin: 30px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        p {
+            color: #d63384;
+            font-size: 1.1em;
+            margin: 20px 0;
+            line-height: 1.6;
+            font-family: 'Microsoft YaHei', 'SimHei', 'Segoe UI', sans-serif;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.4);
+        }
+
+        .no-btn {
+            background: #fff;
+            color: #ff69b4;
+            border: 2px solid #ff69b4;
+        }
+
+        .no-btn:hover {
+            transform: scale(0.9);
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float-heart 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 35px;
+            animation: rotate-flower 8s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes float-heart {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(10deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate-flower {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .response {
+            display: none;
+            margin-top: 30px;
+            color: #ff1493;
+            animation: fadeIn 1s ease-in;
+            font-family: 'Microsoft YaHei', 'SimHei', 'Segoe UI', sans-serif;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .celebration {
+            position: fixed;
+            pointer-events: none;
+            font-size: 40px;
+            animation: celebrate 2s ease-out forwards;
+        }
+
+        @keyframes celebrate {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-500px) scale(2);
+                opacity: 0;
+            }
+        }
+
+        .paw-print {
+            position: fixed;
+            pointer-events: none;
+            font-size: 30px;
+            animation: pawFall 3s ease-in forwards;
+        }
+
+        @keyframes pawFall {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(500px) rotate(15deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            animation: confettiFall 3s ease-in forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(600px) rotate(360deg) translateX(var(--tx));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hearts -->
+    <div class="heart" style="top: 10%; left: 15%;">❤️</div>
+    <div class="heart" style="top: 20%; right: 10%; animation-delay: 1s;">💕</div>
+    <div class="heart" style="bottom: 15%; left: 20%; animation-delay: 2s;">💖</div>
+    <div class="heart" style="top: 60%; right: 15%; animation-delay: 1.5s;">💗</div>
+    <div class="heart" style="bottom: 30%; right: 25%; animation-delay: 0.5s;">💝</div>
+    
+    <!-- Flowers -->
+    <div class="flower" style="top: 15%; right: 20%;">🌸</div>
+    <div class="flower" style="bottom: 20%; left: 10%; animation-delay: 1s;">🌺</div>
+    <div class="flower" style="top: 40%; left: 5%; animation-delay: 2s;">🌷</div>
+    <div class="flower" style="bottom: 40%; right: 8%; animation-delay: 1.5s;">🌹</div>
+    <div class="flower" style="top: 70%; left: 30%; animation-delay: 0.5s;">🌼</div>
+    <div class="flower" style="top: 25%; left: 40%; animation-delay: 3s;">💐</div>
+
+    <div class="container">
+        <h1>小猫咪可以当我的Valentine吗?</h1>
+        
+        <div class="cat-container">🐱</div>
+        
+        <p>🐶 你会让这只小狗变成世界上最幸福的小狗狗！💕</p>
+        <p>汪汪汪汪汪！🐕</p>
+        
+        <div class="buttons" id="buttonContainer">
+            <button class="yes-btn" onclick="sayYes()">当然啊! 🐶😻</button>
+            <button class="no-btn" onclick="moveButton()" id="noBtn">我讨厌小狗 😿🐕</button>
+        </div>
+        
+        <div class="response" id="response">
+            <div style="border-top: 2px solid #ff69b4; padding-top: 20px; margin-bottom: 25px;"></div>
+            <p style="text-align: center; margin: 0 0 25px 0; font-weight: bold; font-size: 1.2em;">嘻嘻小猫咪是我的了，最爱你了小猫咪公主！💖🐕 情人节我们可以做：</p>
+            <ul style="text-align: left; margin: 20px 0 0 0; padding-left: 30px; list-style-position: inside;">
+                <li style="margin: 10px 0; padding-left: 10px;">💐 给小猫咪美丽的花花</li>
+                <li style="margin: 10px 0; padding-left: 10px;">🍫 买小猫咪想吃的巧克力和喝的</li>
+                <li style="margin: 10px 0; padding-left: 10px;">🎬 一起看 Singles Inferno！</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let moveCount = 0;
+        
+        // Cat emoji animation
+        function updateCatEmoji(emoji) {
+            const catContainer = document.querySelector('.cat-container');
+            catContainer.textContent = emoji;
+        }
+        
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const container = document.querySelector('.buttons');
+            
+            moveCount++;
+            
+            // Show smirk cat when she clicks no
+            updateCatEmoji('😼');
+            
+            if (moveCount === 1) {
+                btn.textContent = "小猫咪确定吗? 🥺";
+            } else if (moveCount === 2) {
+                btn.textContent = "别这样小猫！ 😢";
+            } else if (moveCount >= 3) {
+                btn.style.display = 'none';
+            }
+            
+            // Increase movement range on third click
+            let range = moveCount >= 3 ? 800 : 100;
+            const x = Math.random() * range - (range / 2);
+            const y = Math.random() * range - (range / 2);
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        
+        function sayYes() {
+            // Change cat emoji to hearts
+            updateCatEmoji('😻');
+            
+            document.getElementById('buttonContainer').style.display = 'none';
+            document.getElementById('response').style.display = 'block';
+            
+            // Create celebration emojis
+            const emojis = ['🎉', '💕', '🐱', '💖', '🌸', '✨', '🐶', '🐕'];
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const celebration = document.createElement('div');
+                    celebration.className = 'celebration';
+                    celebration.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    celebration.style.left = Math.random() * 100 + '%';
+                    celebration.style.top = Math.random() * 100 + '%';
+                    document.body.appendChild(celebration);
+                    
+                    setTimeout(() => celebration.remove(), 2000);
+                }, i * 100);
+            }
+            
+            // Add confetti
+            const confettiEmojis = ['🎊', '🎉', '✨', '💕', '💖', '🌸', '🐾'];
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '0px';
+                    confetti.style.setProperty('--tx', (Math.random() - 0.5) * 200 + 'px');
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+            
+            // Add paw prints
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const pawPrint = document.createElement('div');
+                    pawPrint.className = 'paw-print';
+                    pawPrint.textContent = '🐾';
+                    pawPrint.style.left = Math.random() * 100 + '%';
+                    pawPrint.style.top = Math.random() * 30 + '%';
+                    document.body.appendChild(pawPrint);
+                    
+                    setTimeout(() => pawPrint.remove(), 3000);
+                }, i * 150);
+            }
+        }
+    </script>
+</body>
+</html>
