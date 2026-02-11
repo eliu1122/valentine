@@ -250,20 +250,22 @@
         function moveButton() {
             const btn = document.getElementById('noBtn');
             const container = document.querySelector('.buttons');
-            
+
             moveCount++;
-            
-            // Show smirk cat when she clicks no
-            updateCatEmoji('😼');
-            
+
+            // Progressive reactions on 'No' clicks:
+            // 1st click -> sad cat; 2nd click -> more sad; 3rd+ -> button disappears and smirk appears
             if (moveCount === 1) {
+                updateCatEmoji('😿'); // sad cat
                 btn.textContent = "小猫咪确定吗? 🥺";
             } else if (moveCount === 2) {
-                btn.textContent = "别这样小猫！ 😢";
+                updateCatEmoji('😾'); // sadder cat (pouting)
+                btn.textContent = "别这样小猫！ 😾";
             } else if (moveCount >= 3) {
                 btn.style.display = 'none';
+                updateCatEmoji('😼'); // smirk appears after it disappears
             }
-            
+
             // Increase movement range on third click
             let range = moveCount >= 3 ? 800 : 100;
             const x = Math.random() * range - (range / 2);
